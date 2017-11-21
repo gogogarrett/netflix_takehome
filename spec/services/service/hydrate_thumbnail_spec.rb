@@ -28,7 +28,7 @@ RSpec.describe Service::HydrateThumbnail do
       )
     end
 
-    it "updates the launch_date for the existing CalendarEvent" do
+    it "updates the thumbnail_url for the existing CalendarEvent" do
       _status, event = Service::HydrateThumbnail.call(movie_data)
       expect(event.thumbnail_url).to eq("https://i.imgur.com/g48UBCK.jpg")
     end
