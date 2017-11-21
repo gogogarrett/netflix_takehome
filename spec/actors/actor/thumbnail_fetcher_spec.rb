@@ -42,6 +42,7 @@ RSpec.describe Actor::ThumbnailFetcher do
 
   describe "Service returning a failure" do
     it "should not terminate/crash the actor" do
+      allow(HttpClient).to receive(:get).and_return(data_hash)
       allow(Service::HydrateThumbnail).to receive(:call).and_return([:error, {}])
       actor = Actor::ThumbnailFetcher.new(100)
 

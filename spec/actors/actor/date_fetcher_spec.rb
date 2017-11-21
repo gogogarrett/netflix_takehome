@@ -42,6 +42,7 @@ RSpec.describe Actor::DateFetcher do
 
   describe "Service returning a failure" do
     it "should not terminate/crash the actor" do
+      allow(HttpClient).to receive(:get).and_return(data_hash)
       allow(Service::HydrateDate).to receive(:call).and_return([:error, "reason"])
       actor = Actor::DateFetcher.new(100)
 

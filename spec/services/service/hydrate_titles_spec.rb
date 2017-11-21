@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Service::HydrateTitle do
   let(:movie_data) do
-    { "id" => 1, "movie_id" => "ee3c0801-9609-49ea-87fa-fcb9b9f438b9", "title" => "Black Is The New Orange: Season 1" }}
+    { "id" => 1, "movie_id" => "ee3c0801-9609-49ea-87fa-fcb9b9f438b9", "title" => "Black Is The New Orange: Season 1" }
   end
 
   context "no movie exist with same movie_id" do
