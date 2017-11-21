@@ -10,7 +10,7 @@ RSpec.describe Actor::DateFetcher do
     expect(actor.is_a?(Celluloid)).to eq(true)
   end
 
-  describe "fetching data from API" do
+  describe "Fetching data from API" do
     context "valid api response" do
       before do
         allow(HttpClient).to receive(:get).and_return(data_hash)
@@ -37,6 +37,17 @@ RSpec.describe Actor::DateFetcher do
         actor = Actor::DateFetcher.new(100)
         dates = actor.run
       end
+    end
+  end
+
+  describe "Service returning a failure" do
+    it "should not terminate/crash the actor" do
+      allow(Service::HydrateDate).to receive(:call).and_return([:error, "reason"])
+      actor = Actor::DateFetcher.new(100)
+
+      expect {
+        actor.run
+      }.to_not raise_error
     end
   end
 end
