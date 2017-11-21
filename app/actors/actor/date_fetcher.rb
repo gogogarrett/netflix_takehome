@@ -9,10 +9,21 @@ module Actor
     def run
       Rails.logger.debug "polling dates"
 
-      dates_data
+      ActiveRecord::Base.transaction do
+        dates_data.each do |date_data|
+          result, _event = ::Service::HydrateDate.call(date_data)
+          if error?(result)
+            raise ActiveRecord::Rollback
+          end
+        end
+      end
     end
 
     private
+
+    def error?(result)
+      result == :error
+    end
 
     def dates_data
       response_data = HttpClient.get(dates_url, headers)
