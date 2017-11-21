@@ -1,15 +1,24 @@
 # Netflix Take Home
 
-## Document your tradeoffs and be prepared to talk about them during the interview
+This application fetches data from 3 different datasources and populates an internal database to be used to produce calendar events.
+
+## Overview:
+
+- Each datasource is polled by [Actors](https://github.com/gogogarrett/netflix_takehome/blob/master/app/actors/actor/date_fetcher.rb) every N seconds to get the latest data.
+- The Actor delegates to a [Service](https://github.com/gogogarrett/netflix_takehome/blob/master/app/services/service/hydrate_date.rb) to perform the work of persisting this information (and anything else that may be necessary to do/transform the external data)
+- Each Actor is [Supervised](https://github.com/gogogarrett/netflix_takehome/blob/master/lib/hydration_supervisor.rb) to ensure if any actor is to crash, they will be restarted automatically
+- The API only returns valid calendar_events which are determined by the [Query](https://github.com/gogogarrett/netflix_takehome/blob/master/app/queries/query/calendar_events.rb) module.
+
+### Document your tradeoffs and be prepared to talk about them during the interview
 
 I took an actor approach to long-poll the apis to keep up to date with their information. While this seems to work well in a small scope, I would like to think heavily about the memory size and performance this may have at large scale.
 
 Depending on the technology available, websockets, or server side events may be better options to achieve real time.
 
-## Explain your architectural choices and how they may differ in a production application that needs to display calendar events in real time as they become available
+### Explain your architectural choices and how they may differ in a production application that needs to display calendar events in real time as they become available
 
 I would spend time optimizing the db queries/operations. I know there are a few ways I could improve the current code.
-I would ensure more things are configurable via ENV vars at a minimum.
+I would ensure more things are configurable via ENV vars.
 
 ## Demos
 
