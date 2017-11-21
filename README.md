@@ -1,24 +1,7 @@
-# README
+# Notes:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+How to run in console to test auth_token config:
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+DATES_AUTH_TOKEN=abc TITLES_AUTH_TOKEN=123 THUMBNAILS_AUTH_TOKEN=drm ./bin/rails c
+```

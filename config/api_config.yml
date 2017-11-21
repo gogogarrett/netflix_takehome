@@ -1,0 +1,32 @@
+development:
+  dates_service:
+    url: 'http://dates.local'
+    auth_token: <%= ENV['DATES_AUTH_TOKEN'] %>
+  titles_service:
+    url: 'http://titles.local'
+    auth_token: <%= ENV['TITLES_AUTH_TOKEN'] %>
+  thumbnails_service:
+    url: 'http://thumbnails.local'
+    auth_token: <%= ENV['THUMBNAILS_AUTH_TOKEN'] %>
+
+test:
+  dates_service:
+    url: 'http://dates_service_test.local'
+    auth_token: 'dates_token'
+  titles_service:
+    url: 'http://titles_service_test.local'
+    auth_token: 'titles_token'
+  thumbnails_service:
+    url: 'http://thumbnails_service_test.local'
+    auth_token: 'thumbnails_token'
+
+production:
+  dates_service:
+    url: 'http://dates.local'
+    auth_token: <%= ENV['DATES_AUTH_TOKEN'] %>
+  titles_service:
+    url: 'http://titles.local'
+    auth_token: <%= ENV['TITLES_AUTH_TOKEN'] %>
+  thumbnails_service:
+    url: 'http://thumbnails.local'
+    auth_token: <%= ENV['THUMBNAILS_AUTH_TOKEN'] %>
