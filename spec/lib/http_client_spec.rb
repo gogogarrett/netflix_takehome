@@ -1,7 +1,7 @@
 require 'spec_helper'
 require_relative '../../lib/http_client'
 
-describe HttpClient do
+RSpec.describe HttpClient do
   context "successful request" do
     it "responds with valid json" do
       stub_request(:get, "https://gogogarrett.local:80/").
