@@ -1,12 +1,12 @@
 development:
   dates_service:
-    url: 'http://dates.local'
+    url: 'https://orion-takehome.herokuapp.com/dates'
     auth_token: <%= ENV['DATES_AUTH_TOKEN'] %>
   titles_service:
-    url: 'http://titles.local'
+    url: 'https://orion-takehome.herokuapp.com/titles'
     auth_token: <%= ENV['TITLES_AUTH_TOKEN'] %>
   thumbnails_service:
-    url: 'http://thumbnails.local'
+    url: 'https://orion-takehome.herokuapp.com/thumbnails'
     auth_token: <%= ENV['THUMBNAILS_AUTH_TOKEN'] %>
 
 test:
