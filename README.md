@@ -17,8 +17,9 @@ Depending on the technology available, websockets, or server side events may be 
 
 ### Explain your architectural choices and how they may differ in a production application that needs to display calendar events in real time as they become available
 
-I would spend time optimizing the db queries/operations. I know there are a few ways I could improve the current code.
-I would ensure more things are configurable via ENV vars.
+- I would spend time optimizing the db queries/operations. I know there are a few ways I could improve the current code.
+- I would ensure more things are configurable via ENV vars.
+- I would look to use an EventSourced stream of updates to happen. You could use this and the current aggregation to see if they produce a valid event, and if so persist that event in the db. Once you have a stream of these events in the db, you could always reply current state by reducing each event, and cache on write, or use materialized views in the db depending on the specific problem/structure.
 
 ## Demos
 
